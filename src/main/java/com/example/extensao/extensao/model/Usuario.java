@@ -1,10 +1,11 @@
 package com.example.extensao.extensao.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class Cadastro extends EntityId {
+public class Usuario extends EntityId {
     @Column(name = "nome", nullable = false)
     private String nome;
     @Column(name = "cnpj", nullable = false)
@@ -15,6 +16,8 @@ public class Cadastro extends EntityId {
     private String telefone;
     @Column(name = "email", nullable = false)
     private String email;
+    @Column(name = "tipo_usuario", nullable = false)
+    private String tipo;
 
     public String getNome() {
         return nome;
@@ -56,14 +59,23 @@ public class Cadastro extends EntityId {
         this.email = email;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
-        return "Cadastro{" +
+        return "Usuario{" +
                 "nome='" + nome + '\'' +
                 ", cnpj='" + cnpj + '\'' +
                 ", endereco='" + endereco + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
 }

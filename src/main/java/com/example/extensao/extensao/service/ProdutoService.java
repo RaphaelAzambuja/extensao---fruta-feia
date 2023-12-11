@@ -1,9 +1,7 @@
 package com.example.extensao.extensao.service;
 
-import com.example.extensao.extensao.enterprise.ValidationException;
 import com.example.extensao.extensao.model.Produto;
 import com.example.extensao.extensao.repository.ProdutoRepository;
-import com.example.extensao.extensao.repository.ProdutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

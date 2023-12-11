@@ -1,8 +1,6 @@
 package com.example.extensao.extensao.resource;
 
-import com.example.extensao.extensao.enterprise.ValidationException;
-import com.example.extensao.extensao.model.Instituicao;
-import com.example.extensao.extensao.service.InstituicaoService;
+import com.example.extensao.extensao.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,35 +10,35 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/instituicao")
-public class InstituicaoController{
+public class UsuarioController {
 
     @Autowired
-    InstituicaoService instituicaoService;
+    UsuarioService usuarioService;
 
     @PostMapping
     public Instituicao createInstituicao(@RequestBody Instituicao instituicao) {
-        return instituicaoService.saveInstituicao(instituicao);
+        return usuarioService.saveInstituicao(instituicao);
     }
 
     @GetMapping
     public List<Instituicao> getInstituicaoList() {
-        return instituicaoService.findAll();
+        return usuarioService.findAll();
     }
 
     @GetMapping("/{idInstituicao}")
     public ResponseEntity<Instituicao> getInstituicaoByID(@PathVariable("idInstituicao") Long idInstituicao) throws Exception {
-        return ResponseEntity.ok(instituicaoService.getById(idInstituicao).orElseThrow(() -> new NoSuchElementException("Not found!")));
+        return ResponseEntity.ok(usuarioService.getById(idInstituicao).orElseThrow(() -> new NoSuchElementException("Not found!")));
     }
 
     @PutMapping("/{idInstituicao}")
     public Instituicao updateInstituicao(@RequestBody Instituicao instituicao) {
-        return instituicaoService.updateInstituicao(instituicao);
+        return usuarioService.updateInstituicao(instituicao);
     }
 
     @DeleteMapping("/{idInstituicao}")
     public ResponseEntity deleteById(@PathVariable("idInstituicao") Long idInstituicao) throws Exception {
         try {
-            instituicaoService.deleteInstituicao(idInstituicao);
+            usuarioService.deleteInstituicao(idInstituicao);
 
 
         } catch (Exception e) {
