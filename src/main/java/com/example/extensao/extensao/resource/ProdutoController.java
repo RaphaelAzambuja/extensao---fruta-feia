@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/produto")
-public class ProdutoController {
+public class ProdutoController extends AbstractController {
 
     @Autowired
     ProdutoService produtoService;

@@ -1,5 +1,6 @@
 package com.example.extensao.extensao.service;
 
+import com.example.extensao.extensao.model.Usuario;
 import com.example.extensao.extensao.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,21 +16,21 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public Instituicao saveInstituicao(Instituicao instituicao){
-        return usuarioRepository.save(instituicao);
+    public Usuario saveUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 
-    public List<Instituicao> findAll(){
+    public List<Usuario> findAll(){
         return usuarioRepository.findAll();
     }
 
-    public Optional<Instituicao> getById(Long idInstituicao){return usuarioRepository.findById(idInstituicao);}
+    public Optional<Usuario> getById(Long idUsuario){return usuarioRepository.findById(idUsuario);}
 
-    public Instituicao updateInstituicao(Instituicao instituicao){
-        return usuarioRepository.save(instituicao);
+    public Usuario updateUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 
-    public void deleteInstituicao(Long idInstituicao){
-        usuarioRepository.deleteById(idInstituicao);}
+    public void deleteUsuario(Long idUsuario){
+        usuarioRepository.deleteById(idUsuario);}
 
 }

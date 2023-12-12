@@ -1,5 +1,6 @@
 package com.example.extensao.extensao.resource;
 
+import com.example.extensao.extensao.model.Usuario;
 import com.example.extensao.extensao.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,42 +10,42 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/instituicao")
-public class UsuarioController {
+@RequestMapping("/usuario")
+public class UsuarioController extends AbstractController {
 
     @Autowired
     UsuarioService usuarioService;
 
     @PostMapping
-    public Instituicao createInstituicao(@RequestBody Instituicao instituicao) {
-        return usuarioService.saveInstituicao(instituicao);
+    public Usuario createUsuario(@RequestBody Usuario usuario) {
+        return usuarioService.saveUsuario(usuario);
     }
 
     @GetMapping
-    public List<Instituicao> getInstituicaoList() {
+    public List<Usuario> getUsuarioList() {
         return usuarioService.findAll();
     }
 
-    @GetMapping("/{idInstituicao}")
-    public ResponseEntity<Instituicao> getInstituicaoByID(@PathVariable("idInstituicao") Long idInstituicao) throws Exception {
-        return ResponseEntity.ok(usuarioService.getById(idInstituicao).orElseThrow(() -> new NoSuchElementException("Not found!")));
+    @GetMapping("/{idUsuario}")
+    public ResponseEntity<Usuario> getUsuarioByID(@PathVariable("idUsuario") Long idUsuario) throws Exception {
+        return ResponseEntity.ok(usuarioService.getById(idUsuario).orElseThrow(() -> new NoSuchElementException("Not found!")));
     }
 
-    @PutMapping("/{idInstituicao}")
-    public Instituicao updateInstituicao(@RequestBody Instituicao instituicao) {
-        return usuarioService.updateInstituicao(instituicao);
+    @PutMapping("/{idUsuario}")
+    public Usuario updateUsuario(@RequestBody Usuario usuario) {
+        return usuarioService.updateUsuario(usuario);
     }
 
-    @DeleteMapping("/{idInstituicao}")
-    public ResponseEntity deleteById(@PathVariable("idInstituicao") Long idInstituicao) throws Exception {
+    @DeleteMapping("/{idUsuario}")
+    public ResponseEntity deleteById(@PathVariable("idUsuario") Long idUsuario) throws Exception {
         try {
-            usuarioService.deleteInstituicao(idInstituicao);
+            usuarioService.deleteUsuario(idUsuario);
 
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return (ResponseEntity<Instituicao>) ResponseEntity.ok();
+        return (ResponseEntity<Usuario>) ResponseEntity.ok();
     }
 
 }

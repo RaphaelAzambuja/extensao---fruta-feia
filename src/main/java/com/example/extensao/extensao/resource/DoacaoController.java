@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/produtor")
-public class DoacaoController {
+@RequestMapping("/doacao")
+public class DoacaoController extends AbstractController {
 
     @Autowired
     DoacaoService doacaoService;

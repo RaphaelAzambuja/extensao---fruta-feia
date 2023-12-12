@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 
-@MappedSuperclass
+@Entity
 public class Usuario extends EntityId {
     @Column(name = "nome", nullable = false)
     private String nome;
