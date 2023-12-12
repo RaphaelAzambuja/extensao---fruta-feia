@@ -26,17 +26,17 @@ public class UsuarioController extends AbstractController {
         return usuarioService.findAll();
     }
 
-    @GetMapping("/{idUsuario}")
+    @GetMapping("{idUsuario}")
     public ResponseEntity<Usuario> getUsuarioByID(@PathVariable("idUsuario") Long idUsuario) throws Exception {
         return ResponseEntity.ok(usuarioService.getById(idUsuario).orElseThrow(() -> new NoSuchElementException("Not found!")));
     }
 
-    @PutMapping("/{idUsuario}")
+    @PutMapping("{idUsuario}")
     public Usuario updateUsuario(@RequestBody Usuario usuario) {
         return usuarioService.updateUsuario(usuario);
     }
 
-    @DeleteMapping("/{idUsuario}")
+    @DeleteMapping("{idUsuario}")
     public ResponseEntity deleteById(@PathVariable("idUsuario") Long idUsuario) throws Exception {
         try {
             usuarioService.deleteUsuario(idUsuario);
@@ -45,7 +45,7 @@ public class UsuarioController extends AbstractController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return (ResponseEntity<Usuario>) ResponseEntity.ok();
+        return ResponseEntity.noContent().build();
     }
 
 }

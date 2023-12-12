@@ -26,17 +26,17 @@ public class ProdutoController extends AbstractController {
         return produtoService.findAll();
     }
 
-    @GetMapping("/{idProduto}")
+    @GetMapping("{idProduto}")
     public ResponseEntity<Produto> getProdutoByID(@PathVariable("idProduto") Long idProduto) throws Exception {
         return ResponseEntity.ok(produtoService.getById(idProduto).orElseThrow(() -> new NoSuchElementException("Not found!")));
     }
 
-    @PutMapping("/{idProduto}")
+    @PutMapping("{idProduto}")
     public Produto updateProduto(@RequestBody Produto produto) {
         return produtoService.updateProduto(produto);
     }
 
-    @DeleteMapping("/{idProduto}")
+    @DeleteMapping("{idProduto}")
     public ResponseEntity deleteById(@PathVariable("idProduto") Long idProduto) throws Exception {
         try {
             produtoService.deleteProduto(idProduto);
@@ -45,7 +45,7 @@ public class ProdutoController extends AbstractController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return (ResponseEntity<Produto>) ResponseEntity.ok();
+        return ResponseEntity.noContent().build();
     }
 
 }

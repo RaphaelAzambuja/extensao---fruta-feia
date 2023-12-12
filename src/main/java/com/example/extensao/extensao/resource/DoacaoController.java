@@ -26,17 +26,17 @@ public class DoacaoController extends AbstractController {
         return doacaoService.findAll();
     }
 
-    @GetMapping("/{idDoacao}")
+    @GetMapping("{idDoacao}")
     public ResponseEntity<Doacao> getDoacaoByID(@PathVariable("idDoacao") Long idDoacao) throws Exception {
         return ResponseEntity.ok(doacaoService.getById(idDoacao).orElseThrow(() -> new NoSuchElementException("Not found!")));
     }
 
-    @PutMapping("/{idDoacao}")
+    @PutMapping("{idDoacao}")
     public Doacao updateDoacao(@RequestBody Doacao doacao) {
         return doacaoService.updateDoacao(doacao);
     }
 
-    @DeleteMapping("/{idDoacao}")
+    @DeleteMapping("{idDoacao}")
     public ResponseEntity deleteById(@PathVariable("idDoacao") Long idDoacao) throws Exception {
         try {
             doacaoService.deleteDoacao(idDoacao);
@@ -45,7 +45,7 @@ public class DoacaoController extends AbstractController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return (ResponseEntity<Doacao>) ResponseEntity.ok();
+        return ResponseEntity.noContent().build();
     }
 
 }
